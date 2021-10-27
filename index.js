@@ -1,7 +1,7 @@
 console.log('hello world');
 
 let addMovie = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let inputField = document.querySelector("input").value;
 
@@ -10,22 +10,28 @@ let addMovie = (event) => {
     let movieTitle = document.createElement("span");
     movieTitle.textContent = inputField;
 
+    movieTitle.addEventListener("click", crossOffMovie);
+
     movie.appendChild(movieTitle);
 
-    let deleteBtn = document.createElement("button")
-    deleteBtn.textContent = "X"
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "X";
 
-    deleteBtn.addEventListener("click", deleteMovie)
+    deleteBtn.addEventListener("click", deleteMovie);
     
-    movie.appendChild(deleteBtn)
+    movie.appendChild(deleteBtn);
 
-    document.querySelector('ul').appendChild(movie)
+    document.querySelector('ul').appendChild(movie);
 
     document.querySelector("input").value = '';
 };
 
+let crossOffMovie = (event) => {
+    event.target.classList.toggle("checked");
+}
+
 document.querySelector('form').addEventListener("submit", addMovie)
 
 let deleteMovie = (event) => {
-    event.target.parentNode.remove()
+    event.target.parentNode.remove();
 }
